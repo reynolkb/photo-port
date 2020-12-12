@@ -103,16 +103,20 @@ const PhotoList = ({ category }) => {
     const currentPhotos = photos.filter((photo) => photo.category === category);
 
     return (
+
         <div>
             <div className="flex-row">
-                {currentPhotos.map((image, i) => (
-                    <img
-                        src={require(`../../assets/small/${category}/${i}.jpg`)}
-                        alt={image.name}
-                        className="img-thumbnail mx-1"
-                        key={image.name}
-                    />
-                ))}
+                {currentPhotos.map((image, i) => {
+                    const imgSrc = require(`../../assets/small/${image.category}/${i}.jpg`);
+                    return (
+                        <img
+                            src={imgSrc.default}
+                            alt={image.name}
+                            className="img-thumbnail mx-1"
+                            key={image.name}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
